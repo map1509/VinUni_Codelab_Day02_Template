@@ -47,7 +47,7 @@ Trong buổi Lab hôm nay, nhóm của bạn sẽ đóng vai trò là **AI Produ
 
 # 🔍 Phase 1 — SCAN (Cá nhân, 20 min)
 
-Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận hành của các công ty thành viên Vingroup. Ghi lại **ít nhất 5 bài toán/bottleneck** thực tế.
+Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận hành của các công ty thành viên Vingroup. Ghi lại **ít nhất 
 
 ### 4 Lenses tìm bài toán AI cho Vingroup:
 1. **Lặp lại (Repetitive):** Tác vụ lặp đi lặp lại nhiều lần hằng ngày. (Ví dụ: So khớp hóa đơn sạc điện tại VinFast, route lại chuyến taxi tại Xanh SM).
@@ -61,14 +61,11 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 > *"Tôi là AI Engineer tại Vin Smart Future (Vingroup). Tôi đang tìm kiếm các pain point vận hành cụ thể có thể tối ưu bằng AI cho mảng [Chọn một: VinFast / Xanh SM / Vinhomes / Vinmec]. Hãy gợi ý cho tôi 5 quy trình nghiệp vụ thủ công, tốn nhiều thời gian và gây rò rỉ hiệu suất kèm con số thống kê ước tính về tổn thất."*
 
 ### 📝 List bài toán của tôi:
-| # | Subsidiary (VinFast/Xanh SM...) | Lens | Mô tả ngắn bài toán |
-|---|----------------------------------|------|---------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-
+1	Xanh SM	Stakeholder Pain	Hành khách bỏ quên đồ trên xe, quy trình báo mất & tìm lại chậm, phải gọi hotline nhiều lần
+2	Xanh SM	Repetitive	Tổng đài viên phải tra cứu thủ công mã chuyến, tài xế, thời gian để xác minh ai đang cầm đồ thất lạc
+3	VinFast	Time-consuming	Soạn thảo phản hồi khiếu nại lỗi pin/sạc từ khách hàng trên các kênh CSKH
+4	Vinhomes	AI-upgrade	Trợ lý cư dân trả lời chậm các câu hỏi lặp lại về phí dịch vụ, quy định chung cư
+5	Xanh SM	Stakeholder Pain	Tài xế phàn nàn hệ thống gợi ý điểm đón khách không chính xác, tốn thời gian vòng lại
 ---
 
 # 🃏 Phase 2 — QUICK-ASSESS (Cá nhân, 30 min)
@@ -79,22 +76,26 @@ Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Pr
 ┌─────────────────────────────────────────────────────────────┐
 │ QUICK PROBLEM CARD #___                                     │
 │                                                             │
-│ Bài toán (1 câu): ________________________________________  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│ Bài toán (1 câu): Hành khách khó tìm lại được đồ đã thất lạc│
+│ Công ty thành viên: [ ] VinFast  [x] Xanh SM  [ ] Vinhomes  │
 │                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? ______________________________________ │
+│ Ai đang đau (Actor)? ___Hành khách, tổng đài viên__________ │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. ___ ──> 2. ___ ──> 3. ___ ──> 4. ___                   │
+│   1. Khách báo mất ──> 2. Tổng đài kiểm tra mã xe, giờ mất, |
+| chuyến ──> 3. Tổng đài xác minh với tài xế trách nhiệm khung|
+| giờ mất ──> 4. Tài xế xác nhận có giữ tài sản hay không     |
+| --> 5. Báo lại khách nơi nhận đồ (nếu có)                   │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? ___ (⏱ ___ phút/lượt)      │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? _____________________ │
+│ Bước nào tốn thời gian/lỗi nhất? 2 & 3(⏱ 30 phút/lượt)      │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? 2______________       │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)? ______________________ │
+│ Đo thành công bằng gì (Metric có số)? Giảm thời gian khách  |
+| phải chờ                                                    │
 │   VD: "Giảm thời gian soạn phản hồi từ 10 min ──> under 2 min"│
 │                                                             │
-│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [ ] Agent │
+│ Quick Architecture: [ ] No AI  [x] Rule  [ ] LLM  [ ] Agent │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -112,18 +113,36 @@ Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Pr
 * 🔴 **Bottleneck:** Bước gây tắc nghẽn, tốn thời gian, hoặc sai sót nhiều nhất.
 * 🔄 **Handoff:** Điểm chuyển giao thông tin giữa người và hệ thống, hoặc giữa các bộ phận.
 * Ghi rõ thời gian vận hành trung bình: **Tổng cộng = ____ phút/lượt**.
+[Khách bỏ quên đồ]
+      │
+      ▼
+[Gọi hotline CSKH] ──🔄 Handoff: khách → tổng đài
+      │
+      ▼
+🔴 [Tổng đài tra cứu thủ công mã chuyến/tài xế] (chậm nhất, dễ sai)
+      │
+      ▼
+[Gọi điện xác minh với tài xế] ──🔄 Handoff: tổng đài → tài xế
+      │
+      ▼
+[Tài xế xác nhận + hẹn thời gian trả đồ]
+      │
+      ▼
+[Khách & tài xế tự sắp xếp gặp nhận lại đồ]
+
+Tổng cộng ≈ 25–40 phút/lượt (giả định, cần khảo sát thực tế)
 
 ## 3.2. Problem Statement (6-field) & Metrics (15 min)
 Điền đầy đủ 6 trường thông tin của bài toán:
 
 | Field | Nội dung chi tiết |
 |---|---|
-| **1. Actor / Operator** | Ai đang thực hiện tác vụ hằng ngày? |
-| **2. Current Workflow** | Mô tả tóm tắt quy trình thủ công hiện tại và công cụ sử dụng. |
-| **3. Bottleneck** | Bước nào chậm, lỗi, hoặc cần xử lý ngôn ngữ tự động nhiều nhất? |
-| **4. Business Impact** | Tổn thất thực tế đo bằng thời gian, chi phí, hoặc SLA của Vingroup. |
-| **5. Success Metric** | AI giải quyết được thì đạt ngưỡng số mấy? (Ví dụ: *"85% vé được phân loại dưới 10s"*). |
-| **6. Operational Boundary** | AI được phép làm gì, TUYỆT ĐỐI không được làm gì, điểm nào cần duyệt? |
+| **1. Actor / Operator** | tổng đài và khách hàng |
+| **2. Current Workflow** | Check tay thủ công chuyến xe, giờ mất |
+| **3. Bottleneck** | Kiẻm tra chuyến xe, thời điểm thất lạc|
+| **4. Business Impact** | 30'/lượt kiểm tra |
+| **5. Success Metric** | Giảm thiểu thời gian chờ, rút ngắn giai đoạn (Ví dụ: *"85% vé được phân loại dưới 10s"*). |
+| **6. Operational Boundary** | AI được phép tra xuất chuyến xe, thời điểm, tài xế trách nhiệm, TUYỆT ĐỐI không được làm gì, xác nhận lại với tài xế cần duyệt? |
 
 ## 3.3. Future-State Flow & AI Fit (25 min)
 * **Xác định mức AI Fit (AI-Fit Matrix):** Giải pháp thuộc nhóm nào? [ ] Rule / State-Machine [ ] LLM Feature [ ] Agentic Loop.
@@ -131,7 +150,25 @@ Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Pr
   * 🔵 **AI Step:** Tác vụ LLM xử lý.
   * 🟢 **Human Step (HITL):** Bước con người phê duyệt/review (Human-in-the-loop).
   * ↩️ **Fallback:** Kế hoạch dự phòng khi LLM trả về kết quả lỗi hoặc không tự tin.
-
+[Khách báo mất đồ trong app]
+      │
+      ▼
+🔵 [AI Step] Trích xuất thông tin từ mô tả tự do của khách
+   (thời gian, điểm đón/trả, đặc điểm xe) → chuẩn hoá thành
+   query có cấu trúc
+      │
+      ▼
+[Rule/Workflow] Tự động khớp với log chuyến đi (mã chuyến, GPS,
+timestamp) → trả về danh sách ứng viên tài xế xếp theo độ khớp
+      │
+      ▼
+🟢 [Human Step - HITL] Tổng đài viên xác nhận ứng viên đúng nhất,
+   chủ động liên hệ tài xế (không để AI tự liên hệ trực tiếp)
+      │
+      ▼
+↩️ [Fallback] Nếu AI không tìm được ứng viên tin cậy (độ khớp thấp)
+   → chuyển thẳng cho tổng đài xử lý thủ công như quy trình cũ,
+   không đoán bừa để tránh liên hệ nhầm tài xế
 ---
 
 # 💻 Phase 4 — TECHNICAL PROMPT PROTOTYPE (Nhóm, 30 min)
@@ -156,17 +193,16 @@ Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Pr
 
 ### AI Readiness Checklist:
 1. [ ] Chúng tôi có sẵn dữ liệu mẫu/logs sạch để test?
-2. [ ] Rủi ro khi AI sai có nằm trong tầm kiểm soát (qua HITL hoặc Fallback)?
+2. [x] Rủi ro khi AI sai có nằm trong tầm kiểm soát (qua HITL hoặc Fallback)?
 3. [ ] Stakeholders sẵn sàng thay đổi quy trình làm việc cũ?
 
 ### Quyết định cuối cùng của Ban Giám Đốc Vin Smart Future:
 [ ] **GO (Bắt đầu xây dựng Prototype):** Bắt đầu phát triển với scope hẹp.
-[ ] **NOT YET (Cần tích lũy thêm dữ liệu/xác lập baseline):** Trì hoãn để chuẩn bị thêm.
+[x] **NOT YET (Cần tích lũy thêm dữ liệu/xác lập baseline):** Trì hoãn để chuẩn bị thêm.
 [ ] **NO-GO (Không khả thi / Rule-based tốt hơn):** Hủy bỏ dự án AI này.
 
 **Justification (Lý giải quyết định dựa trên bằng chứng kỹ thuật và chi phí):**
-> *Viết lý giải chi tiết tại đây*
-
+>Bài toán có bottleneck rõ ràng (tra cứu thủ công tốn thời gian) và phần lõi kỹ thuật (khớp dữ liệu chuyến đi có cấu trúc) hoàn toàn có thể giải bằng Rule/Workflow mà không cần AI phức tạp — đây là tín hiệu tốt về tính khả thi kỹ thuật thấp rủi ro. Tuy nhiên, nhóm chưa có: (1) log chuyến đi thực tế để đo % độ khớp chính xác của phần trích xuất mô tả tự do, (2) baseline thời gian xử lý hiện tại để so sánh cải thiện, và (3) xác nhận từ đội vận hành về việc tổng đài sẵn sàng đổi quy trình. Vì phần AI (trích xuất mô tả tự do) chỉ là lớp hỗ trợ nhỏ chứ không phải lõi bài toán, ưu tiên trước mắt là xây dựng và đo baseline cho phần Rule/Workflow trước, sau đó mới cân nhắc thêm lớp AI nếu tra cứu thủ công vẫn còn là nút thắt sau khi đã tự động hoá phần khớp dữ liệu.
 ---
 
 # 📝 Phase 6 — REFLECTION (Cá nhân)
